@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 97%;
+    --foreground: 224 30% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 224 30% 12%;
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 224 30% 20%;
+    --muted: 220 14% 94%;
+    --muted-foreground: 220 10% 46%;
+    --accent: 220 14% 92%;
+    --accent-foreground: 224 30% 12%;
+    --border: 220 13% 88%;
+    --input: 220 13% 88%;
+    --ring: 160 84% 39%;
+    --radius: 0.625rem;
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --danger: 0 84% 60%;
+  }
+
+  .dark {
+    --background: 224 30% 6%;
+    --foreground: 210 20% 96%;
+    --card: 224 28% 9%;
+    --card-foreground: 210 20% 96%;
+    --primary: 160 84% 45%;
+    --primary-foreground: 224 30% 6%;
+    --secondary: 224 20% 14%;
+    --secondary-foreground: 210 20% 90%;
+    --muted: 224 20% 14%;
+    --muted-foreground: 215 15% 55%;
+    --accent: 224 20% 16%;
+    --accent-foreground: 210 20% 96%;
+    --border: 224 20% 16%;
+    --input: 224 20% 16%;
+    --ring: 160 84% 45%;
+    --success: 142 70% 45%;
+    --warning: 38 92% 50%;
+    --danger: 0 72% 55%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/80 backdrop-blur-md border border-border/50;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-emerald-300 bg-clip-text text-transparent;
+  }
+}
