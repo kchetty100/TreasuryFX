@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/Input'
 import { Button } from '@/components/ui/Button'
 import { useCurrencies, useConvert } from '@/hooks/useApi'
 import { formatRate } from '@/utils/cn'
+import { getCurrencyCodes } from '@/utils/currencies'
 import { Skeleton } from '@/components/ui/Skeleton'
 
 interface ConverterCardProps {
@@ -23,7 +24,7 @@ export function ConverterCard({ defaultFrom = 'USD', defaultTo = 'EUR', compact 
   const { data: result, isLoading, refetch } = useConvert(from, to, numericAmount, false)
   const [converted, setConverted] = useState<typeof result | null>(null)
 
-  const currencyCodes = currencies ? Object.keys(currencies.currencies).sort() : []
+  const currencyCodes = getCurrencyCodes(currencies)
 
   const handleConvert = async () => {
     const { data } = await refetch()

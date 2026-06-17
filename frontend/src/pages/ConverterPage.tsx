@@ -6,6 +6,7 @@ import { Select } from '@/components/ui/Select'
 import { ExchangeRateChart } from '@/charts/ExchangeRateChart'
 import { useCurrencies, useHistoricalRates } from '@/hooks/useApi'
 import { LoadingCard } from '@/components/ui/Skeleton'
+import { getCurrencyCodes } from '@/utils/currencies'
 import type { ChartDataPoint } from '@/types'
 
 export default function ConverterPage() {
@@ -17,7 +18,7 @@ export default function ConverterPage() {
   const startDate = format(subMonths(new Date(), 1), 'yyyy-MM-dd')
   const { data: history, isLoading } = useHistoricalRates(from, to, startDate, endDate)
 
-  const currencyCodes = currencies ? Object.keys(currencies.currencies).sort() : []
+  const currencyCodes = getCurrencyCodes(currencies)
 
   const chartData: ChartDataPoint[] = history
     ? Object.entries(history.rates)

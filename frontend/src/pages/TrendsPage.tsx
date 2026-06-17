@@ -10,6 +10,7 @@ import { ExchangeRateChart } from '@/charts/ExchangeRateChart'
 import { ratesApi } from '@/api/endpoints'
 import { useCurrencies } from '@/hooks/useApi'
 import { downloadJson } from '@/utils/cn'
+import { getCurrencyCodes } from '@/utils/currencies'
 import { LoadingCard, ErrorMessage } from '@/components/ui/Skeleton'
 
 const COMPARE_COLORS = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6']
@@ -21,7 +22,7 @@ export default function TrendsPage() {
   const [endDate, setEndDate] = useState(format(new Date(), 'yyyy-MM-dd'))
 
   const { data: currencies } = useCurrencies()
-  const currencyCodes = currencies ? Object.keys(currencies.currencies).sort() : []
+  const currencyCodes = getCurrencyCodes(currencies)
 
   const queries = useQueries({
     queries: targets.map((target) => ({
